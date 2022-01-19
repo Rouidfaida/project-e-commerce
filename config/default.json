@@ -1,0 +1,7 @@
+{
+    "db":"mongodb+srv://faida:0000@cluster0.j6gfp.mongodb.net/projet?retryWrites=true&w=majority",
+    "secret":"shhhhh",
+    "CLOUDINARY_CLOUD_NAME" :" dhxw6dski",
+    "CLOUDINARY_API_KEY" : "497597419152476",
+   "CLOUDINARY_API_SECRET" :"rOhOYcdpqeFYNR52WFaS9vFFH7U"
+}

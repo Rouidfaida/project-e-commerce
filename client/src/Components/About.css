@@ -1,0 +1,28 @@
+.about {
+    width: 60%;
+    height: 750px;
+    background:rgba(255,255,255,0.623);
+    position: relative;
+    margin: 6rem 18rem 5rem;
+    border-radius: 0 70px;
+  }
+  .about p{
+    background-color: black;
+    margin: 60px 20px;
+    font-size: large;
+    color: blanchedalmond;
+    border-radius: 0 70px;
+    padding: 2rem;
+  }
+  .title{
+    font-family: 'Indie Flower', cursive;
+  }
+  #aboutbtn{
+    color:white ;
+    margin-bottom: 5rem;
+    text-decoration: underline black;
+  }
+  #aboutbtn:hover{
+  color: black;
+  text-decoration: underline white ;
+  }
