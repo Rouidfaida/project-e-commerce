@@ -67,7 +67,7 @@ const Footer = () => {
           </li>
         </ul>
         <div class="b-footer">
-          <p>All rights reserved by ©Khaled 2021 </p>
+          <p>All rights reserved by ©Faida 2021 </p>
         </div>
       </footer>
   </div>);

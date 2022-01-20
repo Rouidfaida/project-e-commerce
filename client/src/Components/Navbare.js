@@ -32,7 +32,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
-
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Chip from "@mui/material/Chip";
@@ -63,7 +63,7 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
     theme.palette.mode === "light"
       ? theme.palette.grey[100]
       : theme.palette.grey[800];
-   
+
   return {
     backgroundColor,
     height: theme.spacing(3),
@@ -213,11 +213,19 @@ const Navbare = ({ search, setSearch }) => {
       </MenuItem>
     </Menu>
   );
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+    },
+  }));
   const categories = useSelector((state) => state.allcategorie);
   return (
     <div style={{ backgroundColor: "red" }}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static"> 
+        <AppBar position="static">
           <Toolbar>
             <IconButton
               size="large"
@@ -268,10 +276,11 @@ const Navbare = ({ search, setSearch }) => {
               </Link>
             </Breadcrumbs>
 
-            <Search style={{ marginLeft: "100px", width: "300px" }}>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
+            <Search
+              style={{ marginLeft: "100px", width: "400px", display: "flex" }}
+            >
+              <Filter />
+
               <StyledInputBase
                 placeholder="Rechercher"
                 inputProps={{ "aria-label": "search" }}
@@ -279,70 +288,73 @@ const Navbare = ({ search, setSearch }) => {
                 onChange={(e) => setSearch(e.target.value)}
                 style={{ width: "280px" }}
               />
+              {/* <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper> */}
             </Search>
-            <Filter/>
-            <div style={{ display: "flex" ,marginLeft:"150px" }}>
-                <PopupState variant="popover" popupId="demo-popup-menu">
-                  {(popupState) => (
-                    <React.Fragment>
-                      <CgProfile
-                        style={{ fontSize: "20px" }}
-                        {...bindTrigger(popupState)}
-                      />
-                     Mon compte
-                      {/* <Button style={{color:"white"}}  {...bindTrigger(popupState)}> */}
-                      {/* </Button> */}
-                      <Menu {...bindMenu(popupState)}>
-                        <Link to="/profile">
-                          <MenuItem
-                            style={{ color: "blue" }}
-                            onClick={popupState.close}
-                          >
-                            Profile
-                          </MenuItem>
-                        </Link>
-                        <Link to="/login">
-                          <MenuItem onClick={popupState.close}>
-                            connecter
-                          </MenuItem>
-                        </Link>
-                        <Link
-                          to="/login"
-                          onClick={() => {
-                            logOut();
-                            dispatch(videCart());
-                          }}
+            <div style={{ display: "flex", marginLeft: "150px" }}>
+              <PopupState variant="popover" popupId="demo-popup-menu">
+                {(popupState) => (
+                  <React.Fragment>
+                    <CgProfile
+                      style={{ fontSize: "20px" }}
+                      {...bindTrigger(popupState)}
+                    />
+                    Mon compte
+                    {/* <Button style={{color:"white"}}  {...bindTrigger(popupState)}> */}
+                    {/* </Button> */}
+                    <Menu {...bindMenu(popupState)}>
+                      <Link to="/profile">
+                        <MenuItem
+                          style={{ color: "blue" }}
+                          onClick={popupState.close}
                         >
-                          <MenuItem onClick={popupState.close}>
-                            deconnecter
-                          </MenuItem>
-                        </Link>
-                      </Menu>
-                    </React.Fragment>
-                  )}
-                </PopupState>
-              </div>
+                          Profile
+                        </MenuItem>
+                      </Link>
+                      <Link to="/login">
+                        <MenuItem onClick={popupState.close}>
+                          connecter
+                        </MenuItem>
+                      </Link>
+                      <Link
+                        to="/login"
+                        onClick={() => {
+                          logOut();
+                          dispatch(videCart());
+                        }}
+                      >
+                        <MenuItem onClick={popupState.close}>
+                          deconnecter
+                        </MenuItem>
+                      </Link>
+                    </Menu>
+                  </React.Fragment>
+                )}
+              </PopupState>
+            </div>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <Link to="/commande">
-                <Badge
-                  style={{ color: "red" }}
-                  badgeContent={
-                    cartItems.length > 0 && (
-                      <span className="notification">{cartItems.length}</span>
-                    )
-                  }
-                >
-                  <AiOutlineShoppingCart
-                    style={{ color: "white", fontSize: "30px" }}
-                  />
-                </Badge>
+                <IconButton aria-label="cart">
+                  <StyledBadge
+                    badgeContent={
+                      cartItems.length > 0 && (
+                        <span className="notification">{cartItems.length}</span>
+                      )
+                    }
+                    color="secondary"
+                  >
+                    <ShoppingCartIcon
+                      style={{ color: "white", fontSize: "30px" }}
+                    />
+                  </StyledBadge>
+                </IconButton>
               </Link>
-              <MdOutlineRemoveShoppingCart
+              {/* <MdOutlineRemoveShoppingCart
                 style={{ marginLeft: "10px", fontSize: "30px" }}
                 onClick={() => dispatch(videCart())}
-              />
-            
+              /> */}
             </Box>
           </Toolbar>
         </AppBar>

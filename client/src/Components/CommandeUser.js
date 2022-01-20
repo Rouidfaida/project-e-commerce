@@ -111,9 +111,7 @@ const CommandeUser = (id) => {
       >
         valider votre commande
       </Button>
-      <Link to="/">
-        <Button>back</Button>
-      </Link>
+     
     </div>
   );
 };
