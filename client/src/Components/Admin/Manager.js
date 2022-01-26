@@ -1,19 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Navigate } from 'react-router-dom'
-import { getCategorielist } from '../redux/categorieAction'
-import { getProduct, getProductlist } from '../redux/productAction'
-import { getUsers } from '../redux/userAction'
-import AddProduct from './AddProduct'
-import AddUser from './UsersList'
-import CategorieList from './CategorieList'
-import Home from './Home'
-import Login from './Login'
-import Navbare from './Navbare'
-import ProductList from './ProductList'
-import ProductListAdmin from './ProductListAdmin'
-import UsersList from './UsersList'
+import { getCategorielist } from '../../redux/categorieAction'
+import { getProductlist } from '../../redux/productAction'
+import ProductListAdmin from '../ManagerDashbord/ProductListAdmin'
+import { getUsers } from '../../redux/userAction'
 import NavBarAdmin from './NavBarAdmin'
+import CategorieList from '../ManagerDashbord/CategorieList'
 
 const Manager = () => {
     const {users} = useSelector(state => state.alluser)
@@ -28,11 +21,11 @@ const Manager = () => {
     return (
         <div> 
             <NavBarAdmin/>
-<ProductListAdmin product={products}/>
+{/* <ProductListAdmin product={products}/>
 <CategorieList categorie={categories}/>
 <Link to='/getuse'>
 <button onClick={()=>dispatch(getUsers())} >get users</button>
-</Link>
+</Link> */}
 {/* <UsersList/> */}
 </div>
     )

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUsers, loginUser } from '../redux/userAction'
+import { getUsers, loginUser } from '../../redux/userAction'
 import {Form,Button} from'react-bootstrap'
 import { Link,Navigate } from 'react-router-dom'
 import './signUp.css'
-import { getProductlist } from '../redux/productAction'
-import Navbare from './Navbare'
+import { getProductlist } from '../../redux/productAction'
 
 
 const Login = () => {

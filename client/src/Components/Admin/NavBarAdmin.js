@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,7 +15,16 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
+import { Breadcrumbs, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import Chip from "@mui/material/Chip";
+import { emphasize } from "@mui/material/styles";
+import HomeIcon from "@mui/icons-material/Home";
+import "./nav.css"
+import { getCategorielist } from '../../redux/categorieAction';
+import { getUsers } from '../../redux/userAction';
+import { getProductlist } from '../../redux/productAction';
+import { useDispatch } from 'react-redux';
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -57,9 +66,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const NavBarAdmin = () => {
+  const dispatch = useDispatch()
+
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+ 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -79,6 +90,27 @@ const NavBarAdmin = () => {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+  const StyledBreadcrumb = styled(Chip)(({ theme }) => {
+    const backgroundColor =
+      theme.palette.mode === "light"
+        ? theme.palette.grey[100]
+        : theme.palette.grey[800];
+  
+    return {
+      backgroundColor,
+      height: theme.spacing(3),
+      color: theme.palette.text.primary,
+      fontWeight: theme.typography.fontWeightRegular,
+      "&:hover, &:focus": {
+        backgroundColor: emphasize(backgroundColor, 0.06),
+      },
+      "&:active": {
+        boxShadow: theme.shadows[1],
+        backgroundColor: emphasize(backgroundColor, 0.12),
+      },
+    };
+  }); // TypeScript only: need a type cast here because https://github.com/Microsoft/TypeScript/issues/26591
+  
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -127,18 +159,7 @@ const NavBarAdmin = () => {
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+    
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -179,6 +200,26 @@ const NavBarAdmin = () => {
         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
         
         </Box>
+        <Breadcrumbs aria-label="breadcrumb">
+              <Link style={{ color: "white" }} to="/prod">
+                <StyledBreadcrumb
+                  component="a"
+                  href="#"
+                  label="Products"
+                  icon={<HomeIcon fontSize="small" />}
+                  onClick={()=>dispatch(getProductlist())}
+                
+                />
+              </Link>
+       
+              <Link style={{ color: "white" }} to='/getuse'>
+
+                <StyledBreadcrumb    onClick={()=>dispatch(getUsers())} component="a" label="User" />
+              </Link>
+              <Link style={{ color: "white" }} to="/categ">
+                <StyledBreadcrumb onClick={()=>dispatch(getCategorielist())}  component="a" label="Categories" />
+              </Link>
+            </Breadcrumbs>
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton
             size="large"

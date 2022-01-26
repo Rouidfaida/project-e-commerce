@@ -1,8 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { deleteCategorie, getCategorielist } from '../redux/categorieAction'
-import AddCategorie from './AddCategorie'
+import { deleteCategorie, getCategorielist } from '../../redux/categorieAction'
 
 const CategorieCart = ({el}) => {
 const dispatch = useDispatch()

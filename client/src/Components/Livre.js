@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductlist } from '../redux/productAction'
-import Home from './Home'
-import Navbare from './Navbare'
 // import ProductCard from './ProductCard'
-import ProductList from './ProductList'
+import Navbare from "./NavBareDashbord/Navbare";
 
 const Livre = () => {
   const {products,loading} = useSelector(state => state.allproduct)

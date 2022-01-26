@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { addManers, getUsers, signUpUser } from '../redux/userAction'
+import { addManers, getUsers, signUpUser } from '../../redux/userAction'
 
 const AddManager = () => {
    const [firstName, setFirstName] = useState('')

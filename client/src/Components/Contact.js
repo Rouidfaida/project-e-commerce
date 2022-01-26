@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Contact.css";
 import emailjs from "emailjs-com";
-import Navbare from "./Navbare";
 import { SocialIcon } from "react-social-icons";
 
 const Contact = () => {

@@ -21,9 +21,9 @@ import Fade from "@mui/material/Fade";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getCategorielist } from "../redux/categorieAction";
-import { filterProduct } from "../redux/productAction";
-import { getUsers, logout } from "../redux/userAction";
+import { getCategorielist } from "../../redux/categorieAction";
+import { filterProduct } from "../../redux/productAction";
+import { getUsers, logout } from "../../redux/userAction";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { GiSpellBook } from "react-icons/gi";
 import { CgProfile } from "react-icons/cg";
@@ -38,10 +38,9 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Chip from "@mui/material/Chip";
 import { emphasize } from "@mui/material/styles";
 import HomeIcon from "@mui/icons-material/Home";
-
-import Filter from "./Filter";
-import { Button, InputLabel } from "@mui/material";
-import { videCart } from "../redux/cartAction";
+import Filter from "../ManagerDashbord/Filter"
+import { BadgeUnstyled, Button, InputLabel } from "@mui/material";
+import { videCart } from "../../redux/cartAction";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,

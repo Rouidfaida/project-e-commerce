@@ -4,19 +4,15 @@ import { Navigate } from "react-router-dom";
 import { getCategorielist } from "../redux/categorieAction";
 import { getProductlist } from "../redux/productAction";
 import { getUsers } from "../redux/userAction";
-import Login from "./Login";
-import ManagerList from "./ManagerList";
-import Navbare from "./Navbare";
-import ProductList from "./ProductList";
 import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import Filter from "./Filter";
 import { filterProduct } from "../redux/productAction";
 import { Col, Row } from "react-bootstrap";
 import { Select } from "@mui/material";
 import Footer from "./Footer";
+import Navbare from "./NavBareDashbord/Navbare";
+import ProductList from "./UserDashbord/ProductList";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -49,18 +45,14 @@ const Home = () => {
   return (
     <div style={{ backgroundColor: "white" }}>
       <Navbare search={search} setSearch={setSearch} />
-      <Row>
 
   
-     <Col style={{marginLeft:"150px"}} xs={12} md={12}>
         <ProductList
           product={products.filter((el) =>
             el.title.toLowerCase().includes(search.toLowerCase())
           )}
         />
         {days == 1 ? <Navigate to="/blackFriday" /> : <></>}
-      </Col>
-      </Row>
       <Footer/>
           </div>
   );

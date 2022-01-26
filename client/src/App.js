@@ -1,29 +1,30 @@
 import './App.css';
-import SignUp from './Components/SignUp';
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom'
-import Login from './Components/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Home from './Components/Home';
-import Navbare from './Components/Navbare';
-import ProductList from './Components/ProductList';
-import Livre from './Components/Livre';
 
-import AddProduct from './Components/AddProduct';
-import Info from './Components/Info';
-import CommandeUser from './Components/CommandeUser';
-import HomeAdmin from './Components/HomeAdmin';
-import UsersList from './Components/UsersList';
-import Manager from './Components/Manager';
-import Admin from './Components/Admin';
-import ManagerList from './Components/ManagerList';
-import AddManager from './Components/AddManager';
-import BlackFriday from './Components/BlackFriday';
-import Profile from './Components/Profile';
-import CategorieList from './Components/CategorieList';
-import ProductListAdmin from './Components/ProductListAdmin';
 import About from './Components/About';
 import Contact from './Components/Contact';
+import SignUp from './Components/UserDashbord/SignUp';
+import Login from './Components/UserDashbord/Login';
+import Manager from './Components/Admin/Manager';
+import ProductList from './Components/UserDashbord/ProductList';
+import AddProduct from './Components/ManagerDashbord/AddProduct';
+import CategorieList from './Components/ManagerDashbord/CategorieList';
+
+import Livre from './Components/Livre';
+import BlackFriday from './Components/BlackFriday';
+import Profile from './Components/UserDashbord/Profile';
+
+import Info from './Components/UserDashbord/Info';
+import CommandeUser from './Components/UserDashbord/CommandeUser';
+import UsersList from './Components/ManagerDashbord/UsersList';
+import HomeAdmin from './Components/Admin/HomeAdmin';
+import Admin from './Components/Admin/Admin';
+import ManagerList from './Components/Admin/ManagerList';
+import AddManager from './Components/Admin/AddManager';
+import ProductListAdmin from './Components/ManagerDashbord/ProductListAdmin';
+import Home from './Components/Home';
 // import 'antd/dist/antd.css';
 function App() {
   

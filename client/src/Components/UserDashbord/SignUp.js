@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { loginUser, signUpUser } from '../redux/userAction'
+import { loginUser, signUpUser } from '../../redux/userAction'
  import {Alert,Button, Form} from'react-bootstrap'
 import { isEmail } from "validator";
 import './signUp.css'
-import Navbare from './Navbare'
+import Navbare from "../NavBareDashbord/Navbare";
 
   
 

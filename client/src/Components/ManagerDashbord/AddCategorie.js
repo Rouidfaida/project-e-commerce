@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AddCategorielist, getCategorielist } from '../redux/categorieAction';
+import { AddCategorielist, getCategorielist } from '../../redux/categorieAction';
 import { Modal,Button, Form, Col, Row } from "react-bootstrap";
 import { useDispatch } from 'react-redux';
 

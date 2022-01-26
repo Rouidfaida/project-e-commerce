@@ -1,60 +1,15 @@
 import axios from "axios";
-import { path } from "express/lib/application";
 import React, { useState } from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { addProduct } from "../redux/productAction";
-import { profileUser } from "../redux/userAction";
-import Product from "./ProductList";
+import { Modal, Button, Form, Col, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { editProduct, getProductlist } from "../../redux/productAction";
 
-const AddProduct = () => {
-  const { users } = useSelector((state) => state.alluser);
-
-  const dispatch = useDispatch();
+const EditProduct = ({ el }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-//   const [file, setFile] = useState();
-//   const formData = new FormData();
-//   if (file) {formData.append("file", file )}
-//  console.log(file)
- const [product, setProduct] = useState({
-  imageUrl: "",
-  title: "",
-  description: "",
-  price: "",
-  category: "",
-  quantity: "",
-  quantityStock: "",
- 
-});
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   dispatch(
-  //     addProduct({
-  //       title,
-  //       description,
-  //       file,
-  //       price,
-  //       category,
-  //       quantity,
-  //       quantityStock,
-  //     })
-  //   )
-  //     setTitle("")
-  //     setCategory("")
-  //     setDescription("")
-  //     setQuantity("")
-  //     setPrice("")
-  //     setQuantityStock("")
-  // };
-
-  // console.log("test"+file)
-  // const changeFile=(e)=>{
-  //   setFile(e.target.files[0])
-  // }
+  const dispatch = useDispatch();
+  const [productedited, setProductEdited] = useState({});
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
@@ -64,23 +19,25 @@ const AddProduct = () => {
       bodyFormData
     );
     console.log(data);
-    setProduct({ ...product, imageUrl: data });
-  };
-  const handleSubmit = () => {
-    dispatch(addProduct(product));
-    
+    setProductEdited({ ...productedited, imageUrl: data });
   };
 
+  const handleSubmit = () => {
+    dispatch(editProduct(el._id, productedited));
+  };
+ 
   return (
     <div>
-      <Button onClick={handleShow}>Ajouter </Button>
+      <Button onClick={handleShow}>update</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> Ajouter le produit</Modal.Title>
+          <Modal.Title> Modifier le produit</Modal.Title>
         </Modal.Header>
-        <form >
-
+        <Form
+          style={{ marginLeft: "10px", marginTop: "10px" }}
+          onSubmit={handleSubmit}
+        >
           <Form.Group
             as={Row}
             className="mb-3"
@@ -93,25 +50,45 @@ const AddProduct = () => {
               <input
                 type="text"
                 placeholder="titre"
-                onChange={(e) => {setProduct({ ...product, title: e.target.value })}}
+                onChange={(e) => {
+                  setProductEdited({
+                    ...productedited,
+                    title: e.target.value,
+                  });
+                }}
               />
             </Col>
           </Form.Group>
-      
           <Form.Group
             as={Row}
             className="mb-3"
             controlId="formPlaintextPassword"
           >
             <Form.Label column sm="2">
-              prix
+              image
+            </Form.Label>
+            <Col sm="10">
+              <input type="file" name="file" onChange={uploadFileHandler} />
+            </Col>
+          </Form.Group>
+          <Form.Group
+            as={Row}
+            className="mb-3"
+            controlId="formPlaintextPassword"
+          >
+            <Form.Label column sm="2">
+              price
             </Form.Label>
             <Col sm="10">
               <input
                 type="text"
-                placeholder="prix"
-                onChange={(e) => {setProduct({ ...product, price: e.target.value })
-                  }  }
+                placeholder="price"
+                onChange={(e) => {
+                  setProductEdited({
+                    ...productedited,
+                    price: e.target.value,
+                  });
+                }}
               />
             </Col>
           </Form.Group>
@@ -128,8 +105,12 @@ const AddProduct = () => {
               <input
                 type="text"
                 placeholder="description"
-                onChange={(e) => {setProduct({ ...product, description: e.target.value })}
-            }
+                onChange={(e) => {
+                  setProductEdited({
+                    ...productedited,
+                    description: e.target.value,
+                  });
+                }}
               />
             </Col>
           </Form.Group>
@@ -139,14 +120,18 @@ const AddProduct = () => {
             controlId="formPlaintextPassword"
           >
             <Form.Label column sm="2">
-            categorie
+              categorie
             </Form.Label>
             <Col sm="10">
               <input
                 type="text"
                 placeholder="categorie"
-                onChange={(e) => {setProduct({ ...product, category: e.target.value })}
-              }
+                onChange={(e) => {
+                  setProductEdited({
+                    ...productedited,
+                    category: e.target.value,
+                  });
+                }}
               />
             </Col>
           </Form.Group>
@@ -161,9 +146,13 @@ const AddProduct = () => {
             <Col sm="10">
               <input
                 type="text"
-                placeholder="quantite"
-                onChange={(e) => {setProduct({ ...product, quantity: e.target.value })}
-              }
+                placeholder="quantitie"
+                onChange={(e) => {
+                  setProductEdited({
+                    ...productedited,
+                    quantity: e.target.value,
+                  });
+                }}
               />
             </Col>
           </Form.Group>
@@ -179,34 +168,23 @@ const AddProduct = () => {
             <Col sm="10">
               <input
                 type="text"
-                placeholder="quantite"
-                onChange={(e) => {setProduct({ ...product, quantityStock: e.target.value })
-                  }  }
+                placeholder="quantitie en stock"
+                onChange={(e) => {
+                  setProductEdited({
+                    ...productedited,
+                    quantityStock: e.target.value,
+                  });
+                }}
               />
             </Col>
           </Form.Group>
-          <Form.Group
-            as={Row}
-            className="mb-3"
-            controlId="formPlaintextPassword"
-          >
-            <Form.Label column sm="2">
-              image
-            </Form.Label>
-           
-       
-          <Col sm="10">
-          <input type="file" name="file" onChange={uploadFileHandler}/>
+        </Form>
 
-          </Col>
-          </Form.Group>
-</form>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary"  onClick={() => { handleSubmit()}}
->
+          <Button variant="primary" onClick={handleSubmit}>
             Save
           </Button>
         </Modal.Footer>
@@ -215,4 +193,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default EditProduct;

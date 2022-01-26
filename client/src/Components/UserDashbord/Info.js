@@ -3,10 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { Link, Navigate } from 'react-router-dom';
-import { addProductCart, addToCart, handelAdd, handelAddProductCart } from '../redux/cartAction';
-import { getProductId, getProductlist } from '../redux/productAction';
-import CommandeUser from './CommandeUser';
-import Navbare from './Navbare';
+import { addToCart } from '../../redux/cartAction';
+import Navbare from '../NavBareDashbord/Navbare';
 import './Info.css'
 // import { useHistory } from "react-router";
 
@@ -36,7 +34,7 @@ let pr =products.find(el=>el._id==params.id)
 
     return (
         <div>
-            <Navbare/>
+<Navbare/>
             <div className="container container-fluid">
       <div className="row f-flex justify-content-around">
         <div className="col-12 col-lg-5 img-fluid" id="product_image">

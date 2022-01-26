@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { deleteUser, getUsers } from '../redux/userAction'
+import { deleteUser, getUsers } from '../../redux/userAction'
 
 const ManagerCart = ({el}) => {
     const dispatch = useDispatch()

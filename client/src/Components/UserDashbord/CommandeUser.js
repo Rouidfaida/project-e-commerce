@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, Table, thead } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import {
-  addProductsCart,
-  handelAddProductCart,
-  handelDelete,
-} from "../redux/cartAction";
-import Navbare from "./Navbare";
+
+
+import Navbare from "../NavBareDashbord/Navbare";
 import "./Commande.css";
 import { TiDelete } from "react-icons/ti";
+import { addProductsCart, handelDelete } from "../../redux/cartAction";
 
 const CommandeUser = (id) => {
   const { products } = useSelector((state) => state.allproduct);

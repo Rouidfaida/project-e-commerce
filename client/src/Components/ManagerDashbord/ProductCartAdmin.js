@@ -6,16 +6,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { Modal, Form, Button, Col, Row } from "react-bootstrap";
 import {
   deleteProduct,
   editProduct,
   getProductId,
   getProductlist,
-} from "../redux/productAction";
+} from "../../redux/productAction";
 import EditProduct from "./EditProduct";
-import { getUsers } from "../redux/userAction";
 const ProductCartAdmin = ({ el }) => {
   const dispatch = useDispatch();
 

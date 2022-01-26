@@ -2,8 +2,8 @@ import { List } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { FloatingLabel, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategorielist } from '../redux/categorieAction'
-import { filterProduct } from '../redux/productAction'
+import { getCategorielist } from '../../redux/categorieAction'
+import { filterProduct } from '../../redux/productAction'
 
 const Filter = () => {
     const categories = useSelector(state => state.allcategorie)

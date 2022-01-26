@@ -1,11 +1,10 @@
 import React from 'react';
 import "./About.css";
-import Navbare from './Navbare';
 
 const About = () => {
   return <div>
-      <Navbare/>
-       <div className="about">
+<Navbare/>
+      <div className="about">
         <h1 className="title">Maison Du Livre
 </h1>
         <p>
