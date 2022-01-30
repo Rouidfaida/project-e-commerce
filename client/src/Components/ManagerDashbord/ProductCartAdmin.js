@@ -53,7 +53,7 @@ const ProductCartAdmin = ({ el }) => {
             onClick={() => {
               dispatch(deleteProduct(el._id));
               Swal.fire("Good job!", "produit removed!", "success");
-              dispatch(getProductlist);
+              dispatch(getProductlist());
             }}
           >
             delete{" "}

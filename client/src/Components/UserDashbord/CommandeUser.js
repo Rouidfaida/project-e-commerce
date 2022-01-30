@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Table, thead } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
-
 import Navbare from "../NavBareDashbord/Navbare";
 import "./Commande.css";
 import { TiDelete } from "react-icons/ti";
@@ -107,7 +106,6 @@ const CommandeUser = (id) => {
       >
         valider votre commande
       </Button>
-     
     </div>
   );
 };

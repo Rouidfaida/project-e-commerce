@@ -58,39 +58,37 @@ export const AddCategorielist = (newCategorie) => async (dispatch) => {
     });
   }
 };
-export const editCategorie =
-  (id, name) =>
-  async (dispatch) => {
-    dispatch({ type: CATEGORIE_UPDATE });
-    let token = localStorage.getItem("token");
-    let config = {
-      headers: {
-        Authorization: token,
-      },
-    };
-    let newCategorie = {
-      id,
-     name
-    };
-
-    try {
-      const res = await axios.put(
-        `/categorie/putCategorie/${id}`,
-        newCategorie,
-        config
-      );
-
-      dispatch({
-        type: CATEGORIE_UPDATE_SUCCESS,
-        payload: res.data,
-      });
-    } catch (error) {
-      dispatch({
-        type: CATEGORIE_UPDATE_FAIL,
-        payload: error.response.data,
-      });
-    }
+export const editCategorie = (id, name) => async (dispatch) => {
+  dispatch({ type: CATEGORIE_UPDATE });
+  let token = localStorage.getItem("token");
+  let config = {
+    headers: {
+      Authorization: token,
+    },
   };
+  let newCategorie = {
+    id,
+    name,
+  };
+
+  try {
+    const res = await axios.put(
+      `/categorie/putCategorie/${id}`,
+      newCategorie,
+      config
+    );
+
+    dispatch({
+      type: CATEGORIE_UPDATE_SUCCESS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: CATEGORIE_UPDATE_FAIL,
+      payload: error.response.data,
+    });
+  }
+};
 
 export const deleteCategorie = (id) => async (dispatch) => {
   dispatch({ type: CATEGORIE_DELETE });

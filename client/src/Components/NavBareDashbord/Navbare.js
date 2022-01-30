@@ -38,7 +38,7 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Chip from "@mui/material/Chip";
 import { emphasize } from "@mui/material/styles";
 import HomeIcon from "@mui/icons-material/Home";
-import Filter from "../ManagerDashbord/Filter"
+import Filter from "../ManagerDashbord/Filter";
 import { BadgeUnstyled, Button, InputLabel } from "@mui/material";
 import { videCart } from "../../redux/cartAction";
 const Search = styled("div")(({ theme }) => ({

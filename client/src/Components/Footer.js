@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Footer.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Footer.css";
 const Footer = () => {
-  return( 
- <div>
+  return (
+    <div>
       <footer class="footer">
         <div class="l-footer">
           <Link className="navbar-brand navbar-logo" to="/">
             <i class="fas fa-dumpster"></i>E-Commerce
           </Link>{" "}
-          <br/>
+          <br />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
             atque recusandae in sit sunt molestiae aliquid fugit. Mollitia eaque
@@ -22,16 +22,16 @@ const Footer = () => {
             <h2>Social</h2>
             <ul class="box">
               <li>
-                <a >Facebook</a>
+                <a>Facebook</a>
               </li>
               <li>
-                <a >Twitter</a>
+                <a>Twitter</a>
               </li>
               <li>
-                <a >Pinterest</a>
+                <a>Pinterest</a>
               </li>
               <li>
-                <a >Dribbble</a>
+                <a>Dribbble</a>
               </li>
             </ul>
           </li>
@@ -39,13 +39,13 @@ const Footer = () => {
             <h2>Information</h2>
             <ul class="box">
               <li>
-                <a >Blog</a>
+                <a>Blog</a>
               </li>
               <li>
-                <a >Pricing</a>
+                <a>Pricing</a>
               </li>
               <li>
-                <a >Sales</a>
+                <a>Sales</a>
               </li>
             </ul>
           </li>
@@ -53,14 +53,14 @@ const Footer = () => {
             <h2>Legal</h2>
             <ul class="box">
               <li>
-                <a >Privacy Policy</a>
+                <a>Privacy Policy</a>
               </li>
               <li>
-                <a >Terms of Use</a>
+                <a>Terms of Use</a>
               </li>
               <li>
                 <Link to="/contact">
-                <a >Contact</a>
+                  <a>Contact</a>
                 </Link>
               </li>
             </ul>
@@ -70,7 +70,8 @@ const Footer = () => {
           <p>All rights reserved by ©Faida 2021 </p>
         </div>
       </footer>
-  </div>);
+    </div>
+  );
 };
 
 export default Footer;

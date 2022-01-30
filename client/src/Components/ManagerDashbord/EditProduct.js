@@ -25,7 +25,7 @@ const EditProduct = ({ el }) => {
   const handleSubmit = () => {
     dispatch(editProduct(el._id, productedited));
   };
- 
+
   return (
     <div>
       <Button onClick={handleShow}>update</Button>

@@ -3,7 +3,8 @@ import { path } from "express/lib/application";
 import React, { useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../../redux/productAction";
+import { addProduct, getProductlist } from "../../redux/productAction";
+import { BiMessageSquareAdd } from "react-icons/bi";
 
 const AddProduct = () => {
   const { users } = useSelector((state) => state.alluser);
@@ -12,20 +13,19 @@ const AddProduct = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-//   const [file, setFile] = useState();
-//   const formData = new FormData();
-//   if (file) {formData.append("file", file )}
-//  console.log(file)
- const [product, setProduct] = useState({
-  imageUrl: "",
-  title: "",
-  description: "",
-  price: "",
-  category: "",
-  quantity: "",
-  quantityStock: "",
- 
-});
+  //   const [file, setFile] = useState();
+  //   const formData = new FormData();
+  //   if (file) {formData.append("file", file )}
+  //  console.log(file)
+  const [product, setProduct] = useState({
+    imageUrl: "",
+    title: "",
+    description: "",
+    price: "",
+    category: "",
+    quantity: "",
+    quantityStock: "",
+  });
 
   // const handleSubmit = (e) => {
   //   e.preventDefault()
@@ -64,20 +64,24 @@ const AddProduct = () => {
     setProduct({ ...product, imageUrl: data });
   };
   const handleSubmit = () => {
-    dispatch(addProduct(product));
-    
+    dispatch(addProduct(product), getProductlist());
   };
 
   return (
     <div>
-      <Button onClick={handleShow}>Ajouter </Button>
+      <BiMessageSquareAdd
+        style={{
+          fontSize: "40px",
+          color: "green",
+          margin: "100px 60px 80px 70px",
+        }}
+      />
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title> Ajouter le produit</Modal.Title>
         </Modal.Header>
-        <form >
-
+        <form>
           <Form.Group
             as={Row}
             className="mb-3"
@@ -90,11 +94,13 @@ const AddProduct = () => {
               <input
                 type="text"
                 placeholder="titre"
-                onChange={(e) => {setProduct({ ...product, title: e.target.value })}}
+                onChange={(e) => {
+                  setProduct({ ...product, title: e.target.value });
+                }}
               />
             </Col>
           </Form.Group>
-      
+
           <Form.Group
             as={Row}
             className="mb-3"
@@ -107,8 +113,9 @@ const AddProduct = () => {
               <input
                 type="text"
                 placeholder="prix"
-                onChange={(e) => {setProduct({ ...product, price: e.target.value })
-                  }  }
+                onChange={(e) => {
+                  setProduct({ ...product, price: e.target.value });
+                }}
               />
             </Col>
           </Form.Group>
@@ -125,8 +132,9 @@ const AddProduct = () => {
               <input
                 type="text"
                 placeholder="description"
-                onChange={(e) => {setProduct({ ...product, description: e.target.value })}
-            }
+                onChange={(e) => {
+                  setProduct({ ...product, description: e.target.value });
+                }}
               />
             </Col>
           </Form.Group>
@@ -136,14 +144,15 @@ const AddProduct = () => {
             controlId="formPlaintextPassword"
           >
             <Form.Label column sm="2">
-            categorie
+              categorie
             </Form.Label>
             <Col sm="10">
               <input
                 type="text"
                 placeholder="categorie"
-                onChange={(e) => {setProduct({ ...product, category: e.target.value })}
-              }
+                onChange={(e) => {
+                  setProduct({ ...product, category: e.target.value });
+                }}
               />
             </Col>
           </Form.Group>
@@ -159,8 +168,9 @@ const AddProduct = () => {
               <input
                 type="text"
                 placeholder="quantite"
-                onChange={(e) => {setProduct({ ...product, quantity: e.target.value })}
-              }
+                onChange={(e) => {
+                  setProduct({ ...product, quantity: e.target.value });
+                }}
               />
             </Col>
           </Form.Group>
@@ -177,8 +187,9 @@ const AddProduct = () => {
               <input
                 type="text"
                 placeholder="quantite"
-                onChange={(e) => {setProduct({ ...product, quantityStock: e.target.value })
-                  }  }
+                onChange={(e) => {
+                  setProduct({ ...product, quantityStock: e.target.value });
+                }}
               />
             </Col>
           </Form.Group>
@@ -190,20 +201,22 @@ const AddProduct = () => {
             <Form.Label column sm="2">
               image
             </Form.Label>
-           
-       
-          <Col sm="10">
-          <input type="file" name="file" onChange={uploadFileHandler}/>
 
-          </Col>
+            <Col sm="10">
+              <input type="file" name="file" onChange={uploadFileHandler} />
+            </Col>
           </Form.Group>
-</form>
+        </form>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary"  onClick={() => { handleSubmit()}}
->
+          <Button
+            variant="primary"
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
             Save
           </Button>
         </Modal.Footer>

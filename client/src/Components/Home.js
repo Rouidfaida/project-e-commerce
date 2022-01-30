@@ -39,22 +39,20 @@ const Home = () => {
   };
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCategorielist()
-    ,getUsers());
+    dispatch(getCategorielist(), getUsers());
   }, [dispatch]);
   return (
     <div style={{ backgroundColor: "white" }}>
       <Navbare search={search} setSearch={setSearch} />
 
-  
-        <ProductList
-          product={products.filter((el) =>
-            el.title.toLowerCase().includes(search.toLowerCase())
-          )}
-        />
-        {days == 1 ? <Navigate to="/blackFriday" /> : <></>}
-      <Footer/>
-          </div>
+      <ProductList
+        product={products.filter((el) =>
+          el.title.toLowerCase().includes(search.toLowerCase())
+        )}
+      />
+      {days == 2 ? <Navigate to="/blackFriday" /> : <></>}
+      <Footer />
+    </div>
   );
 };
 
