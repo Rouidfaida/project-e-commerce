@@ -10,17 +10,17 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_592dhy9",
-        "template_5hqylrt",
+        "service_apjujjb",
+        "template_mt3m2ig",
         e.target,
-        "user_t58H4ok3tTZVVwCco0CZy"
+        "Yf_lTAux8arGXAkGN"
       )
       .then(
         (result) => {
-          console.log(result.text);
+          console.log(result);
         },
         (error) => {
-          console.log(error.text);
+          console.log(error);
         }
       );
     e.target.reset();
