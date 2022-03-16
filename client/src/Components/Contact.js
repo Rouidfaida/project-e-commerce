@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import "./Contact.css";
 import emailjs from "emailjs-com";
 import { SocialIcon } from "react-social-icons";
+import {Map, GoogleApiWrapper} from 'google-maps-react';
 
-const Contact = () => {
+const Contact = (props) => {
   const [result, showresult] = useState(false);
   const sendEmail = (e) => {
     e.preventDefault();
@@ -30,6 +31,10 @@ const Contact = () => {
   setTimeout(() => {
     showresult(false);
   }, 5000);
+  const style = {
+    width: '100%',
+    height: '100%'
+  }
   return (
     <div className="contact-page">
       <img
@@ -86,8 +91,21 @@ const Contact = () => {
         <SocialIcon url="https://www.instagram.com/faidarouid" />
         <SocialIcon url="https://www.linkedin.com/in/faida-rouid-36654965/" />
       </div>
+      <Map
+          google={props.google}
+          style={style}
+
+          initialCenter={{
+            lat: 34.75442083847487,
+            lng: 10.710502550940534
+          }}
+          zoom={15}
+        >
+          </Map>
     </div>
   );
 };
 
-export default Contact;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyBe3LcquH9mol2e-xkjT1oX5DoDL4u66ag"
+})(Contact)

@@ -21,9 +21,8 @@ const ProductList = ({ product }) => {
         backgroundColor: "white",
         display: "flex",
         flexWrap: "wrap",
-        marginLeft: "200px",
         marginTop: "50px",
-        marginRight: "150px",
+        marginLeft:"80px"
       }}
     >
       {product

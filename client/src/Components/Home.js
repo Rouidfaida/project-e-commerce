@@ -8,7 +8,7 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { filterProduct } from "../redux/productAction";
-import { Col, Row } from "react-bootstrap";
+import { Carousel, Col, Row } from "react-bootstrap";
 import { Select } from "@mui/material";
 import Footer from "./Footer";
 import Navbare from "./NavBareDashbord/Navbare";
@@ -44,13 +44,14 @@ const Home = () => {
   return (
     <div style={{ backgroundColor: "white" }}>
       <Navbare search={search} setSearch={setSearch} />
+     
 
       <ProductList
         product={products.filter((el) =>
           el.title.toLowerCase().includes(search.toLowerCase())
         )}
       />
-      {days == 2 ? <Navigate to="/blackFriday" /> : <></>}
+      {days == 4 ? <Navigate to="/blackFriday" /> : <></>}
       <Footer />
     </div>
   );

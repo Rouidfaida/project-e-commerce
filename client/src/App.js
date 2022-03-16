@@ -24,6 +24,8 @@ import ProductListAdmin from "./Components/ManagerDashbord/ProductListAdmin";
 import Home from "./Components/Home";
 import HomeManager from "./Components/Admin/HomeManager";
 import Manager from "./Components/ManagerDashbord/Manager";
+import Faq from "./Components/NavBareDashbord/Faq";
+import Filter from "./Components/ManagerDashbord/Filter";
 // import 'antd/dist/antd.css';
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/sign" element={<SignUp />} />
+          <Route exact path="/faq" element={<Faq />} />
+
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/manager" element={<Manager />} />
           <Route exact path="/productList" element={<ProductList />} />
@@ -50,6 +54,8 @@ function App() {
           <Route exact path="/prod" element={<ProductListAdmin />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/filter" element={<Filter />} />
+
         </Routes>
       </Router>
     </div>

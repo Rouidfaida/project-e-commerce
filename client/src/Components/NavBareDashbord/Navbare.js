@@ -27,11 +27,18 @@ import { getUsers, logout } from "../../redux/userAction";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { GiSpellBook } from "react-icons/gi";
 import { CgProfile } from "react-icons/cg";
+import { BsBasket3Fill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
-import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiFillQuestionCircle,
+  AiOutlineHome,
+  AiOutlinePhone,
+  AiOutlineSearch,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 
-import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { MdContactMail, MdOutlineRemoveShoppingCart } from "react-icons/md";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
@@ -41,71 +48,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import Filter from "../ManagerDashbord/Filter";
 import { BadgeUnstyled, Button, InputLabel } from "@mui/material";
 import { videCart } from "../../redux/cartAction";
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
-}));
+import { BiErrorCircle } from "react-icons/bi";
 
-const StyledBreadcrumb = styled(Chip)(({ theme }) => {
-  const backgroundColor =
-    theme.palette.mode === "light"
-      ? theme.palette.grey[100]
-      : theme.palette.grey[800];
-
-  return {
-    backgroundColor,
-    height: theme.spacing(3),
-    color: theme.palette.text.primary,
-    fontWeight: theme.typography.fontWeightRegular,
-    "&:hover, &:focus": {
-      backgroundColor: emphasize(backgroundColor, 0.06),
-    },
-    "&:active": {
-      boxShadow: theme.shadows[1],
-      backgroundColor: emphasize(backgroundColor, 0.12),
-    },
-  };
-}); // TypeScript only: need a type cast here because https://github.com/Microsoft/TypeScript/issues/26591
-
-function handleClick(event) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
 const Navbare = ({ search, setSearch }) => {
   const logOut = () => {
     // dispatch(videCart())
@@ -222,81 +166,137 @@ const Navbare = ({ search, setSearch }) => {
   }));
   const categories = useSelector((state) => state.allcategorie);
   return (
-    <div style={{ backgroundColor: "red" }}>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            ></IconButton>
+    <div>
+      <div style={{ backgroundColor: "black", height: "200px" }}>
+        <div style={{ display: "flex" }}>
+          <AiOutlinePhone
+            style={{
+              color: "white",
+              marginLeft: "650px",
+              fontSize: "20px",
+              marginTop: "10px",
+            }}
+          />
+          <h2 style={{ color: "white", marginTop: "10px" }}>+216 24 565 230</h2>
 
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
+          <AiFillQuestionCircle
+            style={{
+              color: "white",
+              marginLeft: "25px",
+              fontSize: "20px",
+              marginTop: "10px",
+            }}
+          />
+          <Link style={{ color: "white", marginTop: "10px" }} to="/faq">
+            FAQ
+          </Link>
+          <BiErrorCircle
+            style={{
+              color: "white",
+              marginLeft: "25px",
+              fontSize: "20px",
+              marginTop: "10px",
+            }}
+          />
+          <Link style={{ color: "white", marginTop: "10px" }} to="/about">
+            Qui sommes-Nous ?
+          </Link>
+        </div>
+        <hr style={{ color: "white" }} />
+
+        <div
+          style={{ display: "flex", marginLeft: "100px", marginTop: "30px" }}
+        >
+          <GiSpellBook
+            style={{ width: "50px", height: "50px", color: "orange" }}
+          />
+          <div style={{ display: "block" }}>
+            <h2
+              style={{
+                fontStyle: "italic",
+                color: "white",
+                fontSize: "15px",
+              }}
             >
-              <div style={{ display: "flex" }}>
-                <GiSpellBook
-                  style={{ width: "50px", height: "50px", color: "orange" }}
-                />
-                <div style={{ display: "block" }}>
-                  <h2
-                    style={{
-                      fontStyle: "italic",
-                      color: "white",
-                      fontSize: "20px",
-                    }}
-                  >
-                    libraire en ligne{" "}
-                  </h2>
-                  <h6 style={{ color: "orange" }}>Facilite ton vie </h6>
-                </div>
-              </div>
-            </Typography>
-            <Breadcrumbs aria-label="breadcrumb">
-              <Link style={{ color: "white" }} to="/">
-                <StyledBreadcrumb
-                  component="a"
-                  href="#"
-                  label="Home"
-                  icon={<HomeIcon fontSize="small" />}
-                />
-              </Link>
-              <Link style={{ color: "white" }} to="/about">
-                <StyledBreadcrumb component="a" label="About" />
-              </Link>
-              <Link style={{ color: "white" }} to="/contact">
-                <StyledBreadcrumb component="a" label="Contact" />
-              </Link>
-            </Breadcrumbs>
+              libraire en ligne{" "}
+            </h2>
+            <h6 style={{ color: "orange" }}>Facilite ton vie </h6>
+          </div>
 
-            <Search
-              style={{ marginLeft: "100px", width: "400px", display: "flex" }}
+          <form
+            style={{
+              display: "flex",
+              height: "40px",
+              width: "450px",
+              marginLeft: "100px",
+              marginTop: "10px",
+            }}
+          >
+            <input
+              placeholder="Rechercher"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              style={{
+                width: "480px",
+                backgroundColor: "white",
+                border: "none",
+                borderRadius: "10px 0 0 10px",
+              }}
+            />
+            <button
+              style={{
+                backgroundColor: "orange",
+                width: "150px",
+                color: "white",
+                fontWeight: "bold",
+                border: "none",
+                borderRadius: "0 10px 10px 0px",
+              }}
             >
-              <Filter />
-
-              <StyledInputBase
-                placeholder="Rechercher"
-                inputProps={{ "aria-label": "search" }}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                style={{ width: "280px" }}
-              />
-              {/* <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper> */}
-            </Search>
-            <div style={{ display: "flex", marginLeft: "150px" }}>
+              Rechercher
+            </button>
+          </form>
+          <BsBasket3Fill
+            style={{
+              color: "orange",
+              fontSize: "40px",
+              marginLeft: "20px",
+              marginTop: "10px",
+            }}
+          />
+          <Link to="/commande">
+            {/* <IconButton aria-label="cart"> */}
+            <StyledBadge
+              badgeContent={
+                cartItems.length > 0 && (
+                  <span className="notification" style={{ color: "white" }}>
+                    {cartItems.length}
+                  </span>
+                )
+              }
+              color="secondary"
+              backgroundColor="orange"
+            >
+              {/* <ShoppingCartIcon
+                      style={{ color: "white", fontSize: "30px" }}
+                    /> */}
+            </StyledBadge>
+            {/* </IconButton> */}
+          </Link>
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <div
+              style={{
+                display: "flex",
+                marginLeft: "50px",
+                marginTop: "15px",
+                color: "orange",
+              }}
+            >
               <PopupState variant="popover" popupId="demo-popup-menu">
                 {(popupState) => (
                   <React.Fragment>
                     <CgProfile
-                      style={{ fontSize: "20px" }}
+                      style={{ fontSize: "20px", color: "orange" }}
                       {...bindTrigger(popupState)}
                     />
                     Mon compte
@@ -332,34 +332,40 @@ const Navbare = ({ search, setSearch }) => {
                 )}
               </PopupState>
             </div>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Link to="/commande">
-                <IconButton aria-label="cart">
-                  <StyledBadge
-                    badgeContent={
-                      cartItems.length > 0 && (
-                        <span className="notification">{cartItems.length}</span>
-                      )
-                    }
-                    color="secondary"
-                  >
-                    <ShoppingCartIcon
-                      style={{ color: "white", fontSize: "30px" }}
-                    />
-                  </StyledBadge>
-                </IconButton>
-              </Link>
-              {/* <MdOutlineRemoveShoppingCart
-                style={{ marginLeft: "10px", fontSize: "30px" }}
-                onClick={() => dispatch(videCart())}
-              /> */}
-            </Box>
-          </Toolbar>
-        </AppBar>
-        {renderMobileMenu}
-        {renderMenu}
-      </Box>
+          </Box>
+        </div>
+      </div>
+      <div
+        style={{ backgroundColor: "orange", display: "flex", height: "70px" }}
+      >
+        <div
+          style={{ display: "flex", marginLeft: "700px", marginTop: "20px" }}
+        >
+          <div
+            style={{ display: "flex", marginLeft: "10px", marginRight: "20px" }}
+          >
+            <Link
+              style={{
+                color: "white",
+                display: "flex",
+                marginLeft: "10px",
+              }}
+              to="/"
+            >
+              <AiOutlineHome style={{ fontSize: "20px", marginLeft: "10px" }} />
+              <h6 style={{ fontWeight: "bold", marginLeft: "5px" }}>Accueil</h6>
+            </Link>
+          </div>
+        </div>
+        <Link
+          style={{ color: "white", display: "flex", marginTop: "20px" }}
+          to="/contact"
+        >
+          {/* <MdContactMail style={{ fontSize: "20px", marginLeft: "10px" }} /> */}
+          <h6 style={{ fontWeight: "bold", marginLeft: "5px" }}> Contact</h6>
+        </Link>
+        {/* <Filter/> */}
+      </div>
     </div>
   );
 };

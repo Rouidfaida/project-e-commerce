@@ -61,15 +61,7 @@ const Info = () => {
             >
               Add to Cart
             </button>
-            <Link to="/commande">
-              <button
-                type="button"
-                id="cart_btn"
-                className="btn btn-primary d-inline ml-4"
-              >
-                cart
-              </button>
-            </Link>
+           
             <hr />
 
             <p>

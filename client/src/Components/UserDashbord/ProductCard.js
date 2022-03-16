@@ -8,12 +8,6 @@ import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Modal, Form, Button, Col, Row } from "react-bootstrap";
-import {
-  deleteProduct,
-  editProduct,
-  getProductId,
-  getProductlist,
-} from "../../redux/productAction";
 import EditProduct from "../ManagerDashbord/EditProduct";
 import { getUsers } from "../../redux/userAction";
 import { IconButton } from "@mui/material";
