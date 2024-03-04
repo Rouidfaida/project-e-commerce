@@ -8,20 +8,23 @@ const express = require('express');
 // const { analyzeRequest, getIpDetails, logRequest } = require('./helpers');
 
 const wafMiddleware = (req, res, next) => {
-    // Obtenez l'IP du client, le User-Agent, etc.
-    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const userAgent = req.headers['user-agent'];
+  // Obtenez l'IP du client, le User-Agent, etc.
+  const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const userAgent = req.headers['user-agent'];
 
-// Extraction de la chaîne de recherche de la requête
-const searchQuery = req.query;
+  // Extraire la chaîne de requête complète
+  const queryString = req.originalUrl.split('?')[1]; // Cela donne "1=1"
 
-// Pour extraire spécifiquement '1=1', où '1' est le paramètre
-const paramValue = req.query['1'];
+  // Si vous voulez extraire chaque paramètre séparément dans un cas plus général
+  const queryParams = new URLSearchParams(queryString);
+  
+  // Log pour voir ce que nous avons obtenu
+  console.log('Query string:', queryString); // Affiche "1=1"
+  console.log('Parsed query:', Object.fromEntries(queryParams)); // Affiche { '1': '1' }
 
-// Afficher dans la console
-console.log('Search Query:', searchQuery);
-console.log('Parameter `1` value:', paramValue);
-    next();
+  next();
 };
+
+module.exports = wafMiddleware;
 
 module.exports = wafMiddleware;
