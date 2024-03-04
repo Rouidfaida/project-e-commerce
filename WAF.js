@@ -12,8 +12,15 @@ const wafMiddleware = (req, res, next) => {
     const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const userAgent = req.headers['user-agent'];
 
-    console.log('errrererr',userAgent);
+// Extraction de la chaîne de recherche de la requête
+const searchQuery = req.query;
 
+// Pour extraire spécifiquement '1=1', où '1' est le paramètre
+const paramValue = req.query['1'];
+
+// Afficher dans la console
+console.log('Search Query:', searchQuery);
+console.log('Parameter `1` value:', paramValue);
     next();
 };
 
