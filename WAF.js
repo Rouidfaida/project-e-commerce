@@ -12,7 +12,7 @@ const wafMiddleware = (req, res, next) => {
     const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const userAgent = req.headers['user-agent'];
 
-    console.log('errrererr',req.query);
+    console.log('errrererr',userAgent);
 
     next();
 };
