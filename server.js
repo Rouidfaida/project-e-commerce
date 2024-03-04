@@ -8,6 +8,8 @@ const upload=require('./routes/upload')
 
 const path = require('path');
 const config = require('./config');
+const cors = require('cors');
+
 let app=express();
 connectDB()
 app.use(express.json())
