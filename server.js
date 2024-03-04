@@ -20,5 +20,5 @@ app.use('/commande',commande)
 app.use("/product/uploads",upload);
 
 
-let PORT = process.env.PORT ||4000;
+let PORT = process.env.PORT ||6000;
 app.listen(PORT,(err)=>err? console.log(err):console.log(`server is running ${PORT}`));
