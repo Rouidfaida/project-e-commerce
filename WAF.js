@@ -12,15 +12,16 @@ const wafMiddleware = (req, res, next) => {
   const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const userAgent = req.headers['user-agent'];
 
-  // Extraire la chaîne de requête complète
-  const queryString = req.originalUrl.split('?')[1]; // Cela donne "1=1"
+  const queryString = req.originalUrl.split('?')[1] || '';
 
-  // Si vous voulez extraire chaque paramètre séparément dans un cas plus général
+  // Log the entire query string
+  console.log('Query string:', queryString);
+
+  // Parse individual query parameters
   const queryParams = new URLSearchParams(queryString);
-  
-  // Log pour voir ce que nous avons obtenu
-  console.log('Query string:', queryString); // Affiche "1=1"
-  console.log('Parsed query:', Object.fromEntries(queryParams)); // Affiche { '1': '1' }
+
+  // Log parsed query parameters
+  console.log('Parsed query:', Object.fromEntries(queryParams));
 
   next();
 };
