@@ -16,7 +16,7 @@ let app=express();
 connectDB()
 app.use(express.json())
 // app.use(wafMiddleware);
-
+app.use(wafMiddleware.addSecurityHeaders)
 app.use('/api/uploads',express.static('uploads'))
 
 app.use('/api/user',user)
