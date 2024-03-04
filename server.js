@@ -1,3 +1,5 @@
+require('dotenv').config(); // Placez cette ligne en haut de votre fichier principal (par exemple, server.js)
+
 let express = require('express');
 const connectDB = require('./config/connectDB');
 const user = require('./routes/user');
