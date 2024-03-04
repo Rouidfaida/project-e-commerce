@@ -17,16 +17,16 @@ connectDB()
 app.use(express.json())
 // app.use(wafMiddleware);
 app.use(wafMiddleware.addSecurityHeaders)
-app.use('/uploads',express.static('uploads'))
+app.use('/api/uploads',express.static('uploads'))
 
-app.use('/user',user)
-app.use('/product',products)
-app.use('/categorie',categorie)
-app.use('/commande',commande)
+app.use('/api/user',user)
+app.use('/api/product',products)
+app.use('/api/categorie',categorie)
+app.use('/api/commande',commande)
 
-app.use("/product/uploads",upload);
+app.use("/api/product/uploads",upload);
 // Dans votre code backend (avec Express.js)
-app.post('/track', (req, res) => {
+app.post('/api/track', (req, res) => {
     const visitDetails = req.body; // Assurez-vous que vous avez body-parser configuré pour analyser le corps JSON
     console.log(visitDetails);
     // console.log(res)
