@@ -58,7 +58,6 @@ exports.login=async(req,res)=>{
             email:theUser.email,
             role:theUser.userRole
         }
-        console.log(payload)
         let token =  jwt.sign(payload,secret)
         res.send({token,theUser});
     } catch (error) {
