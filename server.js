@@ -80,7 +80,10 @@ app.use((req, res, next) => {
     res.setHeader('X-Powered-By', 'SECURAS');
     next();
 });
-
+// Définissez vos routes ici
+app.get('/', (req, res) => {
+    res.send('Page d\'accueil');
+  });
 // Middleware WAF peut être activé ici si vous souhaitez qu'il s'exécute après les en-têtes de sécurité
 // app.use(wafMiddleware);
 
