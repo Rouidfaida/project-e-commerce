@@ -7,7 +7,7 @@ const products=require('./routes/product')
 const categorie=require('./routes/categorie')
 const commande=require('./routes/commande')
 const upload=require('./routes/upload')
-
+const wafMiddleware=require('./Middleware WAF')
 const path = require('path');
 const config = require('./config');
 const cors = require('cors');
@@ -15,6 +15,8 @@ const cors = require('cors');
 let app=express();
 connectDB()
 app.use(express.json())
+app.use(wafMiddleware);
+
 app.use('/api/uploads',express.static('uploads'))
 
 app.use('/api/user',user)
