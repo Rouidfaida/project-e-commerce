@@ -1,5 +1,4 @@
-// import { Axios } from '../../../config';
-import { Axios } from "../config";
+import axios from "axios";
 import {
   ADD_ITEM,
   ADD_PRODUCT_TO_CART,
@@ -18,7 +17,7 @@ export const addProductsCart = (newcommande) => async (dispatch) => {
     },
   };
   try {
-    const res = await Axios.post("/commande/newCommande", newcommande, config);
+    const res = await axios.post("/api/commande/newCommande", newcommande, config);
 
     dispatch({
       type: ADD_PRODUCT_TO_CART_SUCCESS,
@@ -45,7 +44,7 @@ export const videCart = () => (dispatch) => {
 };
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const res = await Axios.get(`/product/getProductById/${id}`);
+  const res = await axios.get(`/api/product/getProductById/${id}`);
   dispatch({
     type: ADD_ITEM,
     payload: {

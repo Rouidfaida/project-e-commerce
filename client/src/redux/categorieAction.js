@@ -1,4 +1,4 @@
-import { Axios } from "../config";
+import axios from "axios";
 import {
   CATEGORIE_ADD,
   CATEGORIE_ADD_FAIL,
@@ -19,7 +19,7 @@ export const getCategorielist = () => async (dispatch) => {
     type: CATEGORIE_GET,
   });
   try {
-    let res = await Axios.get("/categorie/getCategorie");
+    let res = await axios.get(" /api/categorie/getCategorie");
     dispatch({
       type: CATEGORIE_GET_SUCCESS,
       payload: res.data,
@@ -42,7 +42,7 @@ export const AddCategorielist = (newCategorie) => async (dispatch) => {
     },
   };
   try {
-    const res = await Axios.post(
+    const res = await axios.post(
       "/categorie/postCategorie",
       newCategorie,
       config
@@ -72,8 +72,8 @@ export const editCategorie = (id, name) => async (dispatch) => {
   };
 
   try {
-    const res = await Axios.put(
-      `/categorie/putCategorie/${id}`,
+    const res = await axios.put(
+      ` /api/categorie/putCategorie/${id}`,
       newCategorie,
       config
     );
@@ -99,7 +99,7 @@ export const deleteCategorie = (id) => async (dispatch) => {
     },
   };
   try {
-    const res = await Axios.delete(`/categorie/deleteCategorie/${id}`, config);
+    const res = await axios.delete(`/api/categorie/deleteCategorie/${id}`, config);
 
     dispatch({
       type: CATEGORIE_DELETE_SUCCESS,
