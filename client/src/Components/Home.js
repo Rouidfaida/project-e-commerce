@@ -47,7 +47,7 @@ const Home = () => {
      
 
       <ProductList
-        product={products.filter((el) =>
+        product={products?.filter((el) =>
           el.title.toLowerCase().includes(search.toLowerCase())
         )}
       />
