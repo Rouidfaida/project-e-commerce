@@ -25,6 +25,15 @@ app.use('/api/categorie',categorie)
 app.use('/api/commande',commande)
 
 app.use("/api/product/uploads",upload);
+app.use((req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+  // Sécurité: Cliquer sur la protection de détournement
+  res.setHeader('X-Frame-Options', 'sameorigin');
+  // CSP: Définir une politique de sécurité du contenu
+  res.setHeader('X-Powered-By', 'SECURAS');
+    console.log(req);
+    next();
+});
 const allowedDomains=config.allowedDomains;
 console.log('rt',allowedDomains)
 
