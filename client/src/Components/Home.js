@@ -45,12 +45,12 @@ const Home = () => {
     <div style={{ backgroundColor: "white" }}>
       <Navbare search={search} setSearch={setSearch} />
      
-
       <ProductList
-        product={products?.filter((el) =>
-          el?.title?.toLowerCase()?.includes(search?.toLowerCase())
-        )}
-      />
+  product={Array.isArray(products) ? products.filter((el) =>
+    el?.title?.toLowerCase().includes(search?.toLowerCase())
+  ) : []}
+/>
+
       {days == 4 ? <Navigate to="/blackFriday" /> : <></>}
       <Footer />
     </div>
