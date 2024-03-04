@@ -31,7 +31,7 @@ app.use((req, res, next) => {
   res.setHeader('X-Frame-Options', 'sameorigin');
   // CSP: Définir une politique de sécurité du contenu
   res.setHeader('X-Powered-By', 'SECURAS');
-    console.log(req);
+    // console.log(req);
     next();
 });
 const allowedDomains=config.allowedDomains;
