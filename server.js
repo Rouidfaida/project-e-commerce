@@ -7,6 +7,7 @@ const commande=require('./routes/commande')
 const upload=require('./routes/upload')
 
 const path = require('path');
+const config = require('./config');
 let app=express();
 connectDB()
 app.use(express.json())
@@ -18,6 +19,14 @@ app.use('/categorie',categorie)
 app.use('/commande',commande)
 
 app.use("/product/uploads",upload);
+const allowedDomains=config.allowedDomains;
+console.log('rt',allowedDomains)
+
+const app_key=config.app_key
+app.use(cors({
+  origin: allowedDomains,
+  credentials: true,
+}));
 
 
 let PORT = process.env.PORT ||6000;
