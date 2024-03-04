@@ -72,20 +72,9 @@ app.use(cors({
   credentials: true,
 }));
 
-// Middleware pour modifier les en-têtes de réponse, placé après CORS mais avant les autres middleware/route
-app.use((req, res, next) => {
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-    res.setHeader('Content-Security-Policy', "default-src 'self'");
-    res.setHeader('X-Powered-By', 'SECURAS');
-    next();
-});
-// Définissez vos routes ici
-app.get('/', (req, res) => {
-    res.send('Page d\'accueil');
-  });
+
 // Middleware WAF peut être activé ici si vous souhaitez qu'il s'exécute après les en-têtes de sécurité
-// app.use(wafMiddleware);
+app.use(wafMiddleware);
 
 // Routes statiques pour les uploads
 app.use('/api/uploads', express.static('uploads'));

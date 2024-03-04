@@ -10,7 +10,7 @@ app.use(async (req, res, next) => {
   const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const userAgent = req.headers['user-agent'];
 
-  console.log(req)
+  console.log('rerrrr',req.query)
 
   next();
 });
