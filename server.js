@@ -15,14 +15,14 @@ const cors = require('cors');
 let app=express();
 connectDB()
 app.use(express.json())
-app.use('/uploads',express.static('uploads'))
+app.use('/api/uploads',express.static('uploads'))
 
-app.use('/user',user)
-app.use('/product',products)
-app.use('/categorie',categorie)
-app.use('/commande',commande)
+app.use('/api/user',user)
+app.use('/api/product',products)
+app.use('/api/categorie',categorie)
+app.use('/api/commande',commande)
 
-app.use("/product/uploads",upload);
+app.use("/api/product/uploads",upload);
 const allowedDomains=config.allowedDomains;
 console.log('rt',allowedDomains)
 

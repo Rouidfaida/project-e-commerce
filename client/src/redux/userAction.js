@@ -1,3 +1,4 @@
+import { Axios } from "../config";
 import {
   ADD_USER,
   ADD_USER_FAIL,
@@ -19,14 +20,13 @@ import {
   SIGN_UP_FAIL,
   SIGN_UP_SUCCESS,
 } from "./userActionType";
-import axios from "axios";
 
 export const signUpUser = (newUser) => async (dispatch) => {
   dispatch({
     type: SIGN_UP,
   });
   try {
-    let res = await axios.post("/user/signUp", newUser);
+    let res = await Axios.post("/user/signUp", newUser);
     dispatch({
       type: SIGN_UP_SUCCESS,
       payload: res.data,
@@ -44,8 +44,8 @@ export const loginUser = (user) => async (dispatch) => {
     type: LOGIN,
   });
   try {
-    let res = await axios.post("/user/login", user);
-    localStorage.setItem("token", res.data.token);
+    let res = await Axios.post("/user/login", user);
+    localStorage?.setItem("token", res?.data?.token);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
@@ -75,7 +75,7 @@ export const profileUser = () => async (dispatch) => {
     },
   };
   try {
-    let res = await axios.get("/user/get", config);
+    let res = await Axios.get("/user/get", config);
     dispatch({
       type: PROFILE_SUCCESS,
       payload: res.data,
@@ -93,7 +93,7 @@ export const getUsers = () => async (dispatch) => {
   });
 
   try {
-    let res = await axios.get("/user/getUsersList");
+    let res = await Axios.get("/user/getUsersList");
     dispatch({
       type: GET_USER_SUCCESS,
       payload: res.data,
@@ -115,7 +115,7 @@ export const getUsers = () => async (dispatch) => {
 //       }
 //     };
 //     try {
-//       const res = await axios.post("/user/addManager",newUser,config);
+//       const res = await Axios.post("/user/addManager",newUser,config);
 
 //       dispatch({
 //         type: ADD_USER_SUCCESS,
@@ -137,7 +137,7 @@ export const deleteUser = (id) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.delete(`/user/deleteManager/${id}`, config);
+    const res = await Axios.delete(`/user/deleteManager/${id}`, config);
 
     dispatch({
       type: DELETE_USER_SUCCESS,

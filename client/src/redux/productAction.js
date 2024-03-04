@@ -1,4 +1,4 @@
-import axios from "axios";
+import { Axios } from "../config";
 import {
   ADD_PRODUCT,
   ADD_PRODUCT_FAIL,
@@ -23,7 +23,7 @@ export const getProductlist = () => async (dispatch) => {
     type: PRODUCT_GET,
   });
   try {
-    let res = await axios.get("/product/getProduct");
+    let res = await Axios.get("/product/getProduct");
     dispatch({
       type: PRODUCT_GET_SUCCESS,
       payload: res.data,
@@ -40,7 +40,7 @@ export const getProductlist = () => async (dispatch) => {
 //     type:PRODUCT_GET_ID
 // })
 // try {
-//   const res = await axios.get(`/product/getProductById/${id}`)
+//   const res = await Axios.get(`/product/getProductById/${id}`)
 //   console.log(res)
 //     dispatch({
 //         type:PRODUCT_GET_ID_SUCCESS,
@@ -70,7 +70,7 @@ export const addProduct = (newproduct) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.post("/product/postProduct", newproduct, config);
+    const res = await Axios.post("/product/postProduct", newproduct, config);
 
     dispatch({
       type: ADD_PRODUCT_SUCCESS,
@@ -93,7 +93,7 @@ export const editProduct = (id, newproduct) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.put(
+    const res = await Axios.put(
       `/product/putProduct/${id}`,
       newproduct,
       config
@@ -120,7 +120,7 @@ export const deleteProduct = (id) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.delete(`/product/deletProduct/${id}`, config);
+    const res = await Axios.delete(`/product/deletProduct/${id}`, config);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,

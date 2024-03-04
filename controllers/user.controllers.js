@@ -73,6 +73,7 @@ exports.getUser=(req,res)=>{
 exports.getUsers = async (req, res) => {
     try {
       let listUsers= await User.find()
+      console.log(listUsers)
       res.send(listUsers)
     } catch (error) {
       res.status(500).json({errors: error.message});
