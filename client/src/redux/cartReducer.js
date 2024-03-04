@@ -32,7 +32,7 @@ export const commandeReducer = (state = initial, { payload, type }) => {
     case DELETE_ITEM:
       return {
         ...state,
-        cartItems: state.cartItems.filter((x) => x.id !== payload),
+        cartItems: state.cartItems?.filter((x) => x.id !== payload),
       };
 
     case VIDER_CART:

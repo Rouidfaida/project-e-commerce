@@ -92,7 +92,7 @@ export const userReducer = (state = init, { payload, type }) => {
       return {
         ...state,
         loading: false,
-        users: state.users.filter((el) => el._id !== payload),
+        users: state.users?.filter((el) => el._id !== payload),
       };
     case LOGOUT:
       return {

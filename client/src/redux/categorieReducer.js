@@ -63,7 +63,7 @@ export const categorieReducer = (state = init, { payload, type }) => {
       return {
         ...state,
         loading: false,
-        categories: state.categories.filter((el) => el._id !== payload),
+        categories: state.categories?.filter((el) => el._id !== payload),
       };
 
     default:

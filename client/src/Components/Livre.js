@@ -12,7 +12,7 @@ const Livre = () => {
   return (
     <div>
       <Navbare />
-      {products.filter((el) => el.category == "livre")}
+      {products?.filter((el) => el.category == "livre")}
       <Home/>
     </div>
   );

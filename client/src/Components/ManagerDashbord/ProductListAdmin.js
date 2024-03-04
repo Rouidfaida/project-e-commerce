@@ -44,7 +44,7 @@ const ProductListAdmin = () => {
           }}
         >
           {products
-            .filter((product) => {
+?.filter((product) => {
               if (categorySelected !== "all")
                 return product.category === categorySelected;
               else return true;

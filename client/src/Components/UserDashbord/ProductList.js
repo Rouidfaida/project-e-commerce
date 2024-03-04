@@ -26,9 +26,9 @@ const ProductList = ({ product }) => {
       }}
     >
       {product
-        .filter((product) => {
+        ?.filter((product) => {
           if (categorySelected !== "all")
-            return product.category === categorySelected;
+            return product?.category === categorySelected;
           else return true;
         })
         .map((el, i) => (

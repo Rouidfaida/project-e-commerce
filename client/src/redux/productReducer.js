@@ -75,7 +75,7 @@ export const productReducer = (state = initial, { payload, type }) => {
       return {
         ...state,
         loading: false,
-        products: state.products.filter((el) => el._id !== payload),
+        products: state.products?.filter((el) => el._id !== payload),
       };
 
     case PRODUCT_FILTER:
