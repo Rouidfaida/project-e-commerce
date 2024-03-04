@@ -1,29 +1,16 @@
-const axios = require('axios');
+// Middleware WAF.js
+const express = require('express');
+const app = express();
 
-const wafMiddleware = async (req, res, next) => {
-    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const userAgent = req.headers['user-agent'];
+// Importez vos helpers et configurations comme nécessaire
+// const { analyzeRequest, getIpDetails, logRequest } = require('./helpers');
 
-    // Préparez les données à envoyer
-    const dataToSend = {
-        ip: clientIp,
-        userAgent: userAgent,
-        // Ajoutez d'autres détails de req et res que vous souhaitez envoyer
-    };
+app.use(async (req, res, next) => {
+  // Obtenez l'IP du client, le User-Agent, etc.
+  const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const userAgent = req.headers['user-agent'];
 
-    try {
-        await axios.post('https://beta.cyber-shield.fr/api2/visits', dataToSend, {
-            headers: {
-                'Content-Type': 'application/json',
-                // Ajoutez d'autres en-têtes nécessaires ici
-            }
-        });
-        console.log('Data sent to API successfully');
-    } catch (error) {
-        console.error('Error sending data to API:', error.response ? error.response.data : error.message);
-    }
+  console.log(req)
 
-    next();
-};
-
-module.exports = wafMiddleware;
+  next();
+});
