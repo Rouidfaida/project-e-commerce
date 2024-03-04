@@ -15,7 +15,7 @@ const cors = require('cors');
 let app=express();
 connectDB()
 app.use(express.json())
-app.use(wafMiddleware);
+// app.use(wafMiddleware);
 
 app.use('/api/uploads',express.static('uploads'))
 
