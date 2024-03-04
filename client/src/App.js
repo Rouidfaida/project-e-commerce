@@ -27,6 +27,9 @@ import Manager from "./Components/ManagerDashbord/Manager";
 import Faq from "./Components/NavBareDashbord/Faq";
 import Filter from "./Components/ManagerDashbord/Filter";
 // import 'antd/dist/antd.css';
+import axios from 'axios';
+import { useEffect } from "react";
+
 function App() {
   // Dans votre code frontend (par exemple, avec React ou un autre framework)
 const trackVisit = () => {
