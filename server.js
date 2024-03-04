@@ -31,18 +31,13 @@ app.use('/api/commande',commande)
 
 app.use("/api/product/uploads",upload);
 // Dans votre code backend (avec Express.js)
-// app.post('/api/track', (req, res) => {
-//     const visitDetails = req.body; // Assurez-vous que vous avez body-parser configuré pour analyser le corps JSON
-//     console.log(visitDetails);
-//     // console.log(res)
-//  // Sécurité: Empêcher le navigateur d'interpréter les fichiers comme autre chose que leur type MIME déclaré
-//  res.setHeader('X-Content-Type-Options', 'nosniff');
-//  // Sécurité: Cliquer sur la protection de détournement
-//  res.setHeader('X-Frame-Options', 'sameorigin');
-//  // CSP: Définir une politique de sécurité du contenu
-//  res.setHeader('X-Powered-By', 'SECURAS');    
-//     res.status(200).send('Visite enregistrée');
-//   });
+app.post('/api/track', (req, res) => {
+    const visitDetails = req.body; // Assurez-vous que vous avez body-parser configuré pour analyser le corps JSON
+    console.log(visitDetails);
+    // console.log(res)
+ 
+    res.status(200).send('Visite enregistrée');
+  });
   
 const allowedDomains=config.allowedDomains;
 console.log('rt',allowedDomains)
