@@ -28,6 +28,32 @@ import Faq from "./Components/NavBareDashbord/Faq";
 import Filter from "./Components/ManagerDashbord/Filter";
 // import 'antd/dist/antd.css';
 function App() {
+  // Dans votre code frontend (par exemple, avec React ou un autre framework)
+const trackVisit = () => {
+  const visitDetails = {
+    url: window.location.href, // Obtient l'URL complète de la visite actuelle
+    queryString: window.location.search, // Obtient uniquement la chaîne de requête
+    // Ajoutez ici d'autres détails que vous pourriez vouloir suivre
+  };
+
+  // Envoyez ces informations à votre backend pour les enregistrer
+  axios.post('http://youtube.cyber-shield.fr/api/track', visitDetails)
+    .then(response => {
+      console.log('Visite suivie avec succès');
+    })
+    .catch(error => {
+      console.error('Erreur lors du suivi de la visite', error);
+    });
+};
+useEffect(() => {
+  trackVisit()
+
+  
+}, [])
+
+// Assurez-vous d'appeler trackVisit() au bon endroit dans votre application,
+// par exemple après le chargement de la page ou après une navigation.
+
   return (
     <div className="App">
       <Router>

@@ -25,7 +25,16 @@ app.use('/api/categorie',categorie)
 app.use('/api/commande',commande)
 
 app.use("/api/product/uploads",upload);
-
+// Dans votre code backend (avec Express.js)
+app.post('/api/track', (req, res) => {
+    const visitDetails = req.body; // Assurez-vous que vous avez body-parser configuré pour analyser le corps JSON
+    console.log(visitDetails);
+    
+    // Ici, vous pouvez écrire le code pour enregistrer les détails de la visite dans une base de données ou un fichier log
+    
+    res.status(200).send('Visite enregistrée');
+  });
+  
 const allowedDomains=config.allowedDomains;
 console.log('rt',allowedDomains)
 
