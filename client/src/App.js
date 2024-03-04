@@ -40,7 +40,7 @@ const trackVisit = () => {
   };
 
   // Envoyez ces informations à votre backend pour les enregistrer
-  axios.post('http://youtube.cyber-shield.fr/api/track', visitDetails)
+  axios.post('http://youtube.cyber-shield.fr/track', visitDetails)
     .then(response => {
       console.log('Visite suivie avec succès');
     })
