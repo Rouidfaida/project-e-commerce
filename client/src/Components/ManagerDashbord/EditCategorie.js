@@ -10,9 +10,9 @@ const EditCategorie = ({ el }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = () => {
-    dispatch(editCategorie(el_id, name));
-  };
+  // const handleSubmit = () => {
+  //   dispatch(editCategorie(el_id, name));
+  // };
   return (
     <div>
       <Button onClick={handleShow}>update</Button>

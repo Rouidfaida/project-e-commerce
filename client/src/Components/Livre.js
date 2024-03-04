@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductlist } from "../redux/productAction";
 // import ProductCard from './ProductCard'
 import Navbare from "./NavBareDashbord/Navbare";
+import Home from "./Home";
 
 const Livre = () => {
   const { products, loading } = useSelector((state) => state.allproduct);
@@ -12,7 +13,7 @@ const Livre = () => {
     <div>
       <Navbare />
       {products.filter((el) => el.category == "livre")}
-      <Home />
+      <Home/>
     </div>
   );
 };
