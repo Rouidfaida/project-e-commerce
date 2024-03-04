@@ -33,10 +33,10 @@ const Home = () => {
   var days = d.getDay();
   const categories = useSelector((state) => state.allcategorie);
   const [category, setCategory] = useState("");
-  const handleCategory = (e) => {
-    setCategory(e.target.value);
-    dispatch(filterProduct(e.target.value));
-  };
+  // const handleCategory = (e) => {
+  //   setCategory(e.target.value);
+  //   dispatch(filterProduct(e.target.value));
+  // };
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategorielist(), getUsers());
@@ -48,7 +48,7 @@ const Home = () => {
 
       <ProductList
         product={products?.filter((el) =>
-          el.title.toLowerCase().includes(search.toLowerCase())
+          el?.title?.toLowerCase()?.includes(search?.toLowerCase())
         )}
       />
       {days == 4 ? <Navigate to="/blackFriday" /> : <></>}

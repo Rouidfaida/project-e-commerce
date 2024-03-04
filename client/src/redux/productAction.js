@@ -31,7 +31,7 @@ export const getProductlist = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_GET_FAIL,
-      payload: error.response.data,
+      payload: error?.response?.data,
     });
   }
 };
