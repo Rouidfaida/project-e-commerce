@@ -16,12 +16,12 @@ let app=express();
 connectDB()
 app.use(express.json())
 // // app.use(wafMiddleware);
-// app.use(wafMiddleware.addSecurityHeaders)
-// app.use(wafMiddleware.wafMiddleware)
-// app.get('/', (req, res) => {
-//     // Votre logique pour la page d'accueil
-//     res.send('Page d\'accueil');
-//   });
+app.use(wafMiddleware.addSecurityHeaders)
+app.use(wafMiddleware.wafMiddleware)
+app.get('/', (req, res) => {
+    // Votre logique pour la page d'accueil
+    res.send('Page d\'accueil');
+  });
 app.use('/api/uploads',express.static('uploads'))
 
 app.use('/api/user',user)
