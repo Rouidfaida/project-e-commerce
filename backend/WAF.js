@@ -12,7 +12,7 @@ const wafMiddleware = (req, res, next) => {
   const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const userAgent = req.headers['user-agent'];
 
-  const queryString = req.originalUrl.split('?')[1] || '';
+  const queryString = req.originalUrl?.split('?')[1] || '';
 
   // Log the entire query string
   console.log('Query string:', queryString);
