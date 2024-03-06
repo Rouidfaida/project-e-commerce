@@ -23,7 +23,7 @@ app.use(express.json())
 //     res.send('Page d\'accueil');
 //   });
 app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url} ${req.body} from ${req.ip}`);
+  console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url}from ${req.ip}`);
   res.setHeader('X-Content-Type-Options', 'nosniff');
     // Sécurité: Cliquer sur la protection de détournement
     res.setHeader('X-Frame-Options', 'sameorigin');
@@ -32,11 +32,11 @@ app.use((req, res, next) => {
       // console.log(req);
   next();
 });
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Route pour gérer les entrées du front-end
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 app.use('/api/uploads',express.static('uploads'))
