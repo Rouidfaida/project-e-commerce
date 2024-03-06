@@ -32,11 +32,11 @@ app.use((req, res, next) => {
       // console.log(req);
   next();
 });
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Route pour gérer les entrées du front-end
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 app.use('/api/uploads',express.static('uploads'))
