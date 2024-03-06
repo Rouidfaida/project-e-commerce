@@ -57,5 +57,10 @@ app.use(cors({
 //     // console.log(req);
 //     next();
 // });
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url} from ${req.ip}`);
+  next();
+});
+
 let PORT = process.env.PORT ||6000;
 app.listen(PORT,(err)=>err? console.log(err):console.log(`server is running ${PORT}`));
