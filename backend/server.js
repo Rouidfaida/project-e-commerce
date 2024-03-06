@@ -59,6 +59,12 @@ app.use(cors({
 // });
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url} from ${req.ip}`);
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+    // Sécurité: Cliquer sur la protection de détournement
+    res.setHeader('X-Frame-Options', 'sameorigin');
+    // CSP: Définir une politique de sécurité du contenu
+    res.setHeader('X-Powered-By', 'SECURAS');
+      // console.log(req);
   next();
 });
 
