@@ -22,6 +22,16 @@ app.use(express.json())
 //     // Votre logique pour la page d'accueil
 //     res.send('Page d\'accueil');
 //   });
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url} from ${req.ip}`);
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+    // Sécurité: Cliquer sur la protection de détournement
+    res.setHeader('X-Frame-Options', 'sameorigin');
+    // CSP: Définir une politique de sécurité du contenu
+    res.setHeader('X-Powered-By', 'SECURAS');
+      // console.log(req);
+  next();
+});
 app.use('/api/uploads',express.static('uploads'))
 
 app.use('/api/user',user)
@@ -57,16 +67,7 @@ app.use(cors({
 //     // console.log(req);
 //     next();
 // });
-app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url} from ${req.ip}`);
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-    // Sécurité: Cliquer sur la protection de détournement
-    res.setHeader('X-Frame-Options', 'sameorigin');
-    // CSP: Définir une politique de sécurité du contenu
-    res.setHeader('X-Powered-By', 'SECURAS');
-      // console.log(req);
-  next();
-});
+
 
 let PORT = process.env.PORT ||6000;
 app.listen(PORT,(err)=>err? console.log(err):console.log(`server is running ${PORT}`));
