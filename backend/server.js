@@ -16,22 +16,22 @@ let app=express();
 connectDB()
 app.use(express.json())
 // // app.use(wafMiddleware);
-// app.use(wafMiddleware.addSecurityHeaders)
-// app.use(wafMiddleware.wafMiddleware)
+app.use(wafMiddleware.addSecurityHeaders)
+app.use(wafMiddleware.wafMiddleware)
 // app.get('/', (req, res) => {
 //     // Votre logique pour la page d'accueil
 //     res.send('Page d\'accueil');
 //   });
-app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url}from ${req.ip}`);
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-    // Sécurité: Cliquer sur la protection de détournement
-    res.setHeader('X-Frame-Options', 'sameorigin');
-    // CSP: Définir une politique de sécurité du contenu
-    res.setHeader('X-Powered-By', 'SECURAS');
-      // console.log(req);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url}from ${req.ip}`);
+//   res.setHeader('X-Content-Type-Options', 'nosniff');
+//     // Sécurité: Cliquer sur la protection de détournement
+//     res.setHeader('X-Frame-Options', 'sameorigin');
+//     // CSP: Définir une politique de sécurité du contenu
+//     res.setHeader('X-Powered-By', 'SECURAS');
+//       // console.log(req);
+//   next();
+// });
 // app.use(express.static(path.join(__dirname, '../client/build')));
 
 // // Route pour gérer les entrées du front-end
