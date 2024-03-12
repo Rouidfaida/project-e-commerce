@@ -13,7 +13,7 @@ const wafMiddleware = (req, res, next) => {
   const userAgent = req.headers['user-agent'];
 
   const queryString = req.originalUrl?.split('?')[1] || '';
-
+console.log('ip',clientIp)
   // Log the entire query string
   console.log('Query string:', queryString);
 
